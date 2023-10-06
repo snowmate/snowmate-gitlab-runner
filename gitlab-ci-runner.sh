@@ -1,3 +1,12 @@
+##### Ensuring Snowmate's client_id & secret_key are properly configured #####
+if [ -z "$SNOWMATE_CLIENT_ID" ]; then
+  echo "SNOWMATE_CLIENT_ID was not found; it must be set for Snowmate's tests to run."
+fi
+
+if [ -z "$SNOWMATE_SECRET_KEY" ]; then
+  echo "SNOWMATE_SECRET_KEY was not found; it must be set for Snowmate's tests to run."
+fi
+
 ##### Setting some more necessary variables #####
 export PROJECT_ID=$1
 export PROJECT_PATH=$2
