@@ -25,12 +25,14 @@ run-snowmate-tests:
     - FEATURE_PROJECT_PATH=$(pwd)
     - TEMP_DIR=$(mktemp -d)
 
-    - SNOWMATE_CI_SCRIPT_URL="git@github.com:snowmate/snowmate-gitlab-runner.git"
-    - BASH_SCRIPT_PATH="$TEMP_DIR/snowmate-gitlab-runner/gitlab-ci-runner.sh"
+    - SNOWMATE_CI_SCRIPT_URL="https://github.com/snowmate/snowmate-gitlab-runner.git"
+    - BASH_SCRIPT_FOLDER="$TEMP_DIR/snowmate-gitlab-runner"
+    - BASH_SCRIPT_PATH="$BASH_SCRIPT_FOLDER/gitlab-ci-runner.sh"
 
     ##### Fetching Snowmate's Bash script for running tests #####
-    - git clone $SNOWMATE_CI_SCRIPT_URL $TEMP_DIR
+    - git clone $SNOWMATE_CI_SCRIPT_URL $BASH_SCRIPT_FOLDER
     - |
+        chmod +x $BASH_SCRIPT_PATH
         "$BASH_SCRIPT_PATH" $PROJECT_ID $PROJECT_PATH $TEMP_DIR $FEATURE_PROJECT_PATH
 
 ```
@@ -48,11 +50,11 @@ If you haven't created a project yet, refer to our [documentation](https://docs.
 2. SNOWMATE_SECRET_KEY
 3. SNOWMATE_GITLAB_GROUP_TOKEN
 
+
 - `SNOWMATE_CLIENT_ID` & `SNOWMATE_SECRET_KEY`
     You must create and add both variables to your GitLab project.
     Instructions on how to add variables to GitLab can be found here.
     If you don't have credentials yet, please follow our [documentation](https://docs.snowmate.io/docs/create-a-new-snowmate-project) on how to create a new project and create new secrets.
-
 
 
 - `SNOWMATE_GITLAB_GROUP_TOKEN`
@@ -60,7 +62,7 @@ If you haven't created a project yet, refer to our [documentation](https://docs.
     ![Snowmate's Pull Request Comment](https://github.com/snowmate/snowmate-gitlab-runner/blob/master/gitlab_comment.png)
 
     You should generate a group access token and add it to your project's GitLab variables, just as you did with SNOWMATE_CLIENT_ID and SNOWMATE_SECRET_KEY.
-    For detailed instructions on how to do just that, please refer to our [documentation](https://docs.snowmate.io/docs/creating-group-access-tokens).
+    For detailed instructions on how to do just that, please refer to our [documentation](https://docs.snowmate.io/docs/creating-group-access-tokens).\
     If, for any reason, you are unable to create this token, you can still enjoy our product without receiving the comment.
 
 **Happy Integrating!**
