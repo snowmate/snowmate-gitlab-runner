@@ -62,7 +62,7 @@ If you haven't created a project yet, refer to our [documentation](https://docs.
     ![Snowmate's Pull Request Comment](https://github.com/snowmate/snowmate-gitlab-runner/blob/master/gitlab_comment.png)
 
     You should generate a group access token and add it to your project's GitLab variables, just as you did with SNOWMATE_CLIENT_ID and SNOWMATE_SECRET_KEY.
-    For detailed instructions on how to do just that, please refer to our [documentation](https://docs.snowmate.io/docs/creating-group-access-tokens).\
+    For detailed instructions on how to do just that, please refer to our [documentation](https://docs.snowmate.io/docs/creating-group-access-tokens).
 
     If, for any reason, you are unable to create this token, you can still enjoy our product without receiving the comment.
 
