@@ -51,11 +51,11 @@ If you haven't created a project yet, refer to our [documentation](https://docs.
 - `SNOWMATE_CLIENT_ID` & `SNOWMATE_SECRET_KEY`
     You must create and add both variables to your GitLab project.
     Instructions on how to add variables to GitLab can be found here.
-    If you don't have credentials yet, please follow our [documentation](https://docs.snowmate.io/docs/create-a-new-snowmate-project): on how to create a new project and create new secrets.
+    If you don't have credentials yet, please follow our [documentation](https://docs.snowmate.io/docs/create-a-new-snowmate-project) on how to create a new project and create new secrets.
 
 
 
-- SNOWMATE_GITLAB_GROUP_TOKEN
+- `SNOWMATE_GITLAB_GROUP_TOKEN`
     Snowmate requires this token to create a comment on GitLab's pull request successfully, as shown below:
     ![Snowmate's Pull Request Comment](https://github.com/snowmate/snowmate-gitlab-runner/blob/master/gitlab_comment.png)
     For detailed instructions on how to create a group access token, please refer to our [documentation](https://docs.snowmate.io/docs/create-a-new-snowmate-project).
