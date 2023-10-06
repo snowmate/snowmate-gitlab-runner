@@ -58,7 +58,7 @@ snowmate_runner run --project-id $PROJECT_ID --client-id $SNOWMATE_CLIENT_ID --s
 set -e # Re-enable exit on error
 
 ##### Create the pull request comment #####
-if [ -z "$SNOWMATE_GITLAB_GROUP_TOKEN" ]; then
+if [ -n "$SNOWMATE_GITLAB_GROUP_TOKEN" ]; then
     if [ -e $SNOWMATE_REPORT_FILE_PATH ]; then
         apt update
         apt-get install jq --assume-yes
