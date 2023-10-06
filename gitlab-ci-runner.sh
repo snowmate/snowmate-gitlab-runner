@@ -1,3 +1,5 @@
+#!/bin/bash -x
+
 ##### Ensuring Snowmate's client_id & secret_key are properly configured #####
 if [ -z "$SNOWMATE_CLIENT_ID" ]; then
   echo "SNOWMATE_CLIENT_ID was not found; it must be set for Snowmate's tests to run."
@@ -45,9 +47,14 @@ export BASELINE_PROJECT_PATH=$(pwd)
 git checkout $CI_MERGE_REQUEST_TARGET_BRANCH_SHA
 
 ##### Running snowmate's tests #####
+if [ "$PROJECT_PATH" != "." ]; then
+  FEATURE_PROJECT_PATH="$FEATURE_PROJECT_PATH/$PROJECT_PATH"
+  BASELINE_PROJECT_PATH="$BASELINE_PROJECT_PATH/$PROJECT_PATH"
+fi
+
 cd $FEATURE_PROJECT_PATH
 set +e # Disable exit on error
-snowmate_runner run --project-id $PROJECT_ID --client-id $SNOWMATE_CLIENT_ID --secret-key $SNOWMATE_SECRET_KEY --workflow-run-id $CI_PIPELINE_ID --cloned-repo-dir $BASELINE_PROJECT_PATH/$PROJECT_PATH --project-root-path $FEATURE_PROJECT_PATH/$PROJECT_PATH --details-url $SNOWMATE_APP_URL/regressions/$PROJECT_ID/$CI_PIPELINE_ID --pull-request-number $CI_MERGE_REQUEST_ID --api-url $SNOWMATE_API_URL --auth-url $SNOWMATE_AUTH_URL --pypi-url $SNOWMATE_PYPI_URL; snowmate_runner_status=$?
+snowmate_runner run --project-id $PROJECT_ID --client-id $SNOWMATE_CLIENT_ID --secret-key $SNOWMATE_SECRET_KEY --workflow-run-id $CI_PIPELINE_ID --cloned-repo-dir $BASELINE_PROJECT_PATH --project-root-path $FEATURE_PROJECT_PATH --details-url $SNOWMATE_APP_URL/regressions/$PROJECT_ID/$CI_PIPELINE_ID --pull-request-number $CI_MERGE_REQUEST_ID --api-url $SNOWMATE_API_URL --auth-url $SNOWMATE_AUTH_URL --pypi-url $SNOWMATE_PYPI_URL; snowmate_runner_status=$?
 set -e # Re-enable exit on error
 
 ##### Create the pull request comment #####
