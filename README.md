@@ -1,5 +1,8 @@
 # snowmate-gitlab-runner
 This is a Bash script for running Snowmate's tests in GitLab's CI/CD.
+In order for it to start running, make sure to add the following parts into your .gitlab-ci.yml file.
+
+If you have never used gitlab CI/CD before, it's very simple just follow [GitLab's docs](https://docs.gitlab.com/ee/ci/quick_start/).
 
 
 ## How to Add it to Your CI/CD ##
@@ -27,27 +30,37 @@ run-snowmate-tests:
 
     ##### Fetching Snowmate's Bash script for running tests #####
     - git clone $SNOWMATE_CI_SCRIPT_URL $TEMP_DIR
-    - "$BASH_SCRIPT_PATH" $PROJECT_ID $PROJECT_PATH $TEMP_DIR $FEATURE_PROJECT_PATH
+    - |
+        "$BASH_SCRIPT_PATH" $PROJECT_ID $PROJECT_PATH $TEMP_DIR $FEATURE_PROJECT_PATH
+
 ```
 
-Please note that in order to run this in your CI, you need to create three variables:
+Please note that in order to run this in your CI, there are two essential steps you need to follow:
+
+### 1. Replacing PROJECT_ID & PROJECT_PATH ###
+
+Ensure that you replace the `PROJECT_ID` and `PROJECT_PATH` with the ones you have created on our website.
+If you haven't created a project yet, refer to our [documentation](https://docs.snowmate.io/docs/create-a-new-snowmate-project) for instructions on how to create a new project.
+
+### 2. Creating three GitLab variables ###
 
 1. SNOWMATE_CLIENT_ID
 2. SNOWMATE_SECRET_KEY
 3. SNOWMATE_GITLAB_GROUP_TOKEN
 
-- SNOWMATE_CLIENT_ID & SNOWMATE_SECRET_KEY
+- `SNOWMATE_CLIENT_ID` & `SNOWMATE_SECRET_KEY`
     You must create and add both variables to your GitLab project.
     Instructions on how to add variables to GitLab can be found here.
-    If you don't have credentials yet, please follow our documentation: Create a New Snowmate Project.
+    If you don't have credentials yet, please follow our [documentation](https://docs.snowmate.io/docs/create-a-new-snowmate-project) on how to create a new project and create new secrets.
 
 
 
-- SNOWMATE_GITLAB_GROUP_TOKEN
-    Snowmate requires this token to successfully create a comment on GitLab's pull request, like so:
-    []
-    Be sure to follow our documentation for more instructions on how to create a group access token.
-    If, for some reason, you are unable to create this token, you can still enjoy our product without receiving the comment.
+- `SNOWMATE_GITLAB_GROUP_TOKEN`
+    Snowmate requires this token to create a comment on GitLab's pull request successfully, as shown below:
+    ![Snowmate's Pull Request Comment](https://github.com/snowmate/snowmate-gitlab-runner/blob/master/gitlab_comment.png)
 
+    You should generate a group access token and add it to your project's GitLab variables, just as you did with SNOWMATE_CLIENT_ID and SNOWMATE_SECRET_KEY.
+    For detailed instructions on how to do just that, please refer to our [documentation](https://docs.snowmate.io/docs/creating-group-access-tokens).
+    If, for any reason, you are unable to create this token, you can still enjoy our product without receiving the comment.
 
 **Happy Integrating!**
