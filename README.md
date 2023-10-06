@@ -57,7 +57,7 @@ If you haven't created a project yet, refer to our [documentation](https://docs.
 
 - SNOWMATE_GITLAB_GROUP_TOKEN
     Snowmate requires this token to create a comment on GitLab's pull request successfully, as shown below:
-    [Snowmate's Pull Request Comment](https://github.com/snowmate/snowmate-gitlab-runner/blob/master/gitlab_comment.png)
+    ![Snowmate's Pull Request Comment](https://github.com/snowmate/snowmate-gitlab-runner/blob/master/gitlab_comment.png)
     For detailed instructions on how to create a group access token, please refer to our [documentation](https://docs.snowmate.io/docs/create-a-new-snowmate-project).
     If, for any reason, you are unable to create this token, you can still enjoy our product without receiving the comment.
 
