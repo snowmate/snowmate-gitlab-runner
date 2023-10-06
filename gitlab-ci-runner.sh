@@ -60,9 +60,9 @@ if [ -z "$SNOWMATE_GITLAB_GROUP_TOKEN" ]; then
     else
         echo "Snowmate result file was not created, can not create a comment on the pull request"
     fi
-fi
 
 else
     echo "SNOWMATE_GITLAB_GROUP_TOKEN does not exist, can not create a comment on the pull request"
+fi
 
 exit $snowmate_runner_status
