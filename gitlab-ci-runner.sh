@@ -33,9 +33,6 @@ if [ -z "$SNOWMATE_PYPI_URL" ]; then
   export SNOWMATE_PYPI_URL="https://pypi.snowmate.io/simple"
 fi
 
-##### Installing requirements #####
-pip3 install -r requirements.txt
-
 ##### Installing snowmate_runner #####
 pip3 install -i "https://${SNOWMATE_CLIENT_ID}:${SNOWMATE_SECRET_KEY}@pypi.dev.snowmate.io/simple" -U snowmate_runner
 

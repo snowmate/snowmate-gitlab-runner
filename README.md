@@ -53,7 +53,7 @@ If you haven't created a project yet, refer to our [documentation](https://docs.
 
 - `SNOWMATE_CLIENT_ID` & `SNOWMATE_SECRET_KEY`
     You must create and add both variables to your GitLab project.
-    Instructions on how to add variables to GitLab can be found here.
+    Instructions on how to add variables to GitLab can be found [here](https://docs.gitlab.com/ee/ci/variables/#for-a-project).
     If you don't have credentials yet, please follow our [documentation](https://docs.snowmate.io/docs/create-a-new-snowmate-project) on how to create a new project and create new secrets.
 
 
