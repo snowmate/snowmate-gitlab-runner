@@ -33,9 +33,6 @@ if [ -z "$SNOWMATE_PYPI_URL" ]; then
   export SNOWMATE_PYPI_URL="https://pypi.snowmate.io/simple"
 fi
 
-##### Installing requirements #####
-pip3 install -r requirements.txt
-
 ##### Installing snowmate_runner #####
 pip3 install -i "https://${SNOWMATE_CLIENT_ID}:${SNOWMATE_SECRET_KEY}@pypi.dev.snowmate.io/simple" -U snowmate_runner
 
@@ -63,7 +60,7 @@ if [ -n "$SNOWMATE_GITLAB_GROUP_TOKEN" ]; then
         apt update
         apt-get install jq --assume-yes
         markdown_content=$(cat $SNOWMATE_REPORT_FILE_PATH | jq -s -R .)
-        curl --location --request POST "$MERGE_REQUEST_COMMENT_API_URL" --header "PRIVATE-TOKEN: $SNOWMATE_GITLAB_GROUP_TOKEN" --header "Content-Type: application/json" --data-raw "{ \"body\": $markdown_content }"
+        curl --location --request POST "$MERGE_REQUEST_COMMENT_API_URL" --header "PRIVATE-TOKEN: $SNOWMATE_GITLAB_GROUP_TOKEN" --header "Content-Type: application/json" --data-raw "{ \"body\": $markdown_content }" > /dev/null
     else
         echo "Snowmate result file was not created, can not create a comment on the pull request"
     fi
