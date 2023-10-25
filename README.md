@@ -21,6 +21,9 @@ run-snowmate-tests:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
   image: python:3.10
   script:
+    ##### Installing requirements #####
+    - pip3 install -r <your_requirements_file> # Or replace with your project's necessary installation steps.
+
     ##### Setting some variables #####
     - FEATURE_PROJECT_PATH=$(pwd)
     - TEMP_DIR=$(mktemp -d)
