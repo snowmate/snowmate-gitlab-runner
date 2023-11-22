@@ -34,7 +34,7 @@ if [ -z "$SNOWMATE_PYPI_URL" ]; then
 fi
 
 ##### Installing snowmate_runner #####
-pip3 install -i "https://${SNOWMATE_CLIENT_ID}:${SNOWMATE_SECRET_KEY}@pypi.dev.snowmate.io/simple" -U snowmate_runner
+pip3 install -i "https://${SNOWMATE_CLIENT_ID}:${SNOWMATE_SECRET_KEY}@${SNOWMATE_PYPI_URL}" -U snowmate_runner
 
 ##### Cloning previous branch #####
 cd $TEMP_DIR
